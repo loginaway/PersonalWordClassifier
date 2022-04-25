@@ -127,3 +127,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+corenlp_server-5a633a5818ef494a.props
