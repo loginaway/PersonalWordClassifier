@@ -128,7 +128,7 @@ class ParsingBasedNormalizer:
         # self.INDEFINITE_WORDS_SP = {'one', 'all', 'man', 'person', 'guy',\
         #     'anybody', 'everybody', 'somebody', 'nobody', 'anyone', 'everyone', 'someone'}   # effective only when occurs as subject
         self.INDEFINITE_WORDS = {'woman', 'men', 'women', \
-                                'i', 'me', 'myself', 'my', 'mine', \
+                                'I', 'i', 'me', 'myself', 'my', 'mine', \
                                 'you', 'yourself', 'your', 'yours', \
                                 'he', 'him', 'himself', 'his', \
                                 'she', 'her', 'herself', 'hers', \
@@ -138,7 +138,7 @@ class ParsingBasedNormalizer:
         self.INDEFINITE_WORDS_SP = {'one', 'all', 'man', 'person', 'guy'}   # effective only when occurs as subject
         self.INDEFINITE_WORDS_ALL = self.INDEFINITE_WORDS_SP | self.INDEFINITE_WORDS
 
-        self.PRP_COREF = [['i', 'me', 'myself', 'my', 'mine'],\
+        self.PRP_COREF = [['I', 'i', 'me', 'myself', 'my', 'mine'],\
                            ['you', 'yourself', 'your', 'yours'],\
                             ['he', 'him', 'himself', 'his', 'man'], \
                             ['she', 'her', 'herself', 'hers', 'woman'], \
@@ -575,8 +575,6 @@ class ParsingBasedNormalizer:
                     spans.pop(i+1)
                 else:
                     i += 1
-                
-
 
         node_wrds = node.split(' ')
         norm_node_wrds = []
@@ -590,12 +588,6 @@ class ParsingBasedNormalizer:
         norm_node_wrds.extend(node_wrds[last_j:])
         return {'norm_node': ' '.join(norm_node_wrds), 'p2i': dict(p2indices)}
 
-
-
-
-
-
-
     def proc_and_print(self, info_list):
         for info in info_list:
             info = eval(info)
@@ -606,4 +598,4 @@ class ParsingBasedNormalizer:
             if data:
                 subj = ' '.join(data['subj'][0][2])
                 objs = [' '.join(i[2]) for i in data['objs']]
-                print('【SUBJ】:{}\t【OBJS】: {}'.format(subj, ', '.join(objs)))
+                print('[SUBJ]:{}\t[OBJS]: {}'.format(subj, ', '.join(objs)))
